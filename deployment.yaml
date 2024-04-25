@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curl-deployment
+spec:
+  replicas: 3  # Number of replicas (pods) to run
+  selector:
+    matchLabels:
+      app: curl  # Label selector for pods managed by this Deployment
+  template:
+    metadata:
+      labels:
+        app: curl  # Label applied to pods managed by this Deployment
+    spec:
+      containers:
+      - name: curl-container
+        image: curlimages/curl:latest  # Replace with your Docker image name and tag
+        command: ["sleep", "infinity"]  # Keep the container running
